@@ -12,9 +12,10 @@ async function index(req, res) {
     res.render('flights/index', { title: 'All Flights', flights});
 }
 async function show(req, res) {
-    res.render('flights/new', {
-        flight: flight,
-        title: 'Flight Detail'
+    const flight = await Flight.findById(req.params.id)
+    res.render('flights/show', {
+        title: 'Flight Detail',
+        flight
     });
 }
 
